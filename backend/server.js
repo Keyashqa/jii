@@ -3,12 +3,15 @@ const dotenv = require('dotenv');
 const connectDB = require('./config/db');
 const errorHandler = require('./middleware/errorhandler');
 const path = require('path');
-
+const cors = require('cors');
 dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 3000;
-
+app.use(cors({
+  origin: 'https://jii-1.onrender.com/', // Replace with your frontend URL
+  credentials: true,
+}));
 // Connect to MongoDB
 connectDB();
 
